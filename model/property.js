@@ -23,6 +23,9 @@ const propertySchema = new Schema(
       ref: "User",
       required: true,
     },
+    location:{
+      type:String
+    }
   },
   {
     collection: "property",

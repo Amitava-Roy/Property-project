@@ -14,8 +14,15 @@ exports.getPropertyList = (req, res, next) => {
 };
 
 exports.postProperty = (req, res, next) => {
-  const { imgUrl, name, type, movingDate, price, owner } =
-    req.body;
+  const {
+    imgUrl,
+    name,
+    type,
+    movingDate,
+    price,
+    owner,
+    location,
+  } = req.body;
   //validation of inputs
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -36,6 +43,7 @@ exports.postProperty = (req, res, next) => {
     type,
     movingDate,
     owner,
+    location,
   });
   property
     .save()
@@ -49,8 +57,14 @@ exports.patchProperty = (req, res, next) => {
   const id = req.params.id;
   console.log(id);
   //reading inputs
-  const { name, imgUrl, price, type, movingDate } =
-    req.body;
+  const {
+    name,
+    imgUrl,
+    price,
+    type,
+    movingDate,
+    location,
+  } = req.body;
   //validating inputs
 
   const errors = validationResult(req);
@@ -73,6 +87,7 @@ exports.patchProperty = (req, res, next) => {
       price,
       type,
       movingDate,
+      location,
     },
     { new: true }
   )
