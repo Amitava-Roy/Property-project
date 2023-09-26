@@ -93,6 +93,9 @@ exports.patchProperty = (req, res, next) => {
   )
     .then((data) => {
       console.log(data);
+      if (!data) {
+        return next(new Error("could not find product"));
+      }
       res.status(201).json({
         message: "data updated successfully",
       });
